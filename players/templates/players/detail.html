@@ -1,0 +1,365 @@
+{% load widget_tweaks %} {% load static %}
+
+<div class="modal-header">
+  <h3 class="modal-title">{{ player.player_name }}'s details</h3>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_content">
+       
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+              <li role="presentation" class="active">
+                <a
+                  href="#tab_content1"
+                  id="home-tab"
+                  role="tab"
+                  data-toggle="tab"
+                  aria-expanded="true"
+                  >Profile</a
+                >
+              </li>
+              
+              <li role="presentation" class="">
+                <a
+                  href="#tab_content2"
+                  role="tab"
+                  id="conditioning-tab"
+                  data-toggle="tab"
+                  aria-expanded="false"
+                  >Bio Data</a
+                >
+              </li>
+             
+              <li role="presentation" class="">
+                <a
+                  href="#tab_content4"
+                  role="tab"
+                  id="summary-tab"
+                  data-toggle="tab"
+                  aria-expanded="false"
+                  >Stats</a
+                >
+                <li role="presentation" class="">
+                    <a
+                      href="#tab_content3"
+                      role="tab"
+                      id="medical-tab"
+                      data-toggle="tab"
+                      aria-expanded="false"
+                      >Conditioning</a
+                    >
+                  </li>
+              </li>
+              <li role="presentation" class="">
+                  <a
+                    href="#tab_content5"
+                    role="tab"
+                    id="summary-tab"
+                    data-toggle="tab"
+                    aria-expanded="false"
+                    >Medicals</a
+                  >
+                </li>
+            </ul>
+
+            
+            <div id="myTabContent" class="tab-content">
+              <div
+                role="tabpanel"
+                class="tab-pane fade active in"
+                id="tab_content1"
+                aria-labelledby="home-tab"
+              >
+                <!-- start profile -->
+                <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                    <div class="profile_img">
+                      <div id="crop-avatar">
+                        <!-- Current avatar -->
+                        <img
+                        {% if player.image %}
+                          src="{{ player.image.url }}"
+                        {% else %}
+                        src="{% static 'images/user.png' %}"
+                        {% endif %}
+                          alt=" "
+                          style="width:200px;height:240px;" 
+                        />
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 ">
+                    <h4>Basic Info</h4>
+                    <ul class="list-unstyled user_data">
+                      <li>
+                        <i class="fa fa-calendar user-profile-icon"></i>
+                        Age: {{ player.age }} yrs
+                      </li>
+                      <li>
+                        <i class="fa fa-map-marker user-profile-icon"></i>
+                        Address: {{ player.address }} {{ player.adrres_contact }}
+                      </li>
+                      <li>
+                        <i class="fa fa-home user-profile-icon"></i>
+                        Club: {{ player.club }}
+                      </li>
+                      <li>
+                        <i class="fa fa-briefcase user-profile-icon"></i>
+                        Position: {{ player.position }}
+                      </li>
+
+                      <li>
+                          <i class="fa fa-arrows-v user-profile-icon"></i>
+                          Height: {{ player.height }} Cms 
+                        </li>
+
+                        <li>
+                            <i class="fa fa-asterisk user-profile-icon"></i>
+                            Weight: {{ player.weight }} Kgs
+                          </li>
+
+          
+                      <li class="m-top-xs">
+                        <i class="fa fa-external-link user-profile-icon"></i>
+                        <a href="#" target="_blank">Email: {{ player.email }}</a>
+                      </li>
+                    </ul>
+                  </div>
+               
+                  
+                    <div class="col-md-3 col-sm-3 col-xs-12 profile_right">
+                    <!-- start skills -->
+                    <h4>Skills</h4>
+                    <ul class="list-unstyled user_data">
+                      <li>
+                        <p>Web Applications</p>
+                        <div class="progress progress_sm">
+                          <div
+                            class="progress-bar bg-green"
+                            role="progressbar"
+                            data-transitiongoal="50"
+                          ></div>
+                        </div>
+                      </li>
+                      <li>
+                        <p>Website Design</p>
+                        <div class="progress progress_sm">
+                          <div
+                            class="progress-bar bg-green"
+                            role="progressbar"
+                            data-transitiongoal="70"
+                          ></div>
+                        </div>
+                      </li>
+                      <li>
+                        <p>Automation & Testing</p>
+                        <div class="progress progress_sm">
+                          <div
+                            class="progress-bar bg-green"
+                            role="progressbar"
+                            data-transitiongoal="30"
+                          ></div>
+                        </div>
+                      </li>
+                      <li>
+                        <p>UI / UX</p>
+                        <div class="progress progress_sm">
+                          <div
+                            class="progress-bar bg-green"
+                            role="progressbar"
+                            data-transitiongoal="50"
+                          ></div>
+                        </div>
+                      </li>
+                    </ul>
+                    <!-- end of skills -->
+                  </div>
+                </div>
+                <!-- end profile -->
+              </div>
+
+              <div
+              role="tabpanel"
+              class="tab-pane fade"
+              id="tab_content2"
+              aria-labelledby="profile-tab"
+            >
+              <!-- start user Bio Data -->
+              <table class="data table table-striped no-margin">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Details</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                       <td>ID/Passport No</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                       <td>Address</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                       <td>Address Contacts</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                       <td>Next Of Kin</td>
+                      <td>{{ player.kin }}</td>
+                    </tr>
+                    <tr>
+                       <td>Injury History</td>
+                      <td>{{ player.injury_history }}</td>
+                    </tr>
+                    <tr>
+                       <td>Player Allergies</td>
+                      <td>{{ player.allergy }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              <!-- end user Bio Data -->
+            </div>
+
+
+              <div
+                role="tabpanel"
+                class="tab-pane fade"
+                id="tab_content3"
+                aria-labelledby="profile-tab"
+              >
+                <!-- start user conditioning -->
+                <div class="table-responsive">
+                    <table class="table table-striped jambo_table bulk_action">
+                                      <thead>
+                                        <tr class="headings">
+                                          <th class="column-title">Date</th>
+                                          <th class="column-title">Bench</th>
+                                          <th class="column-title">Squats</th>
+                                          <th class="column-title">V Jumps</th>
+                                          <th class="column-title">H Jumps</th>
+                                          <th class="column-title">Yoyo</th>
+                                          <th class="column-title">T test R</th>
+                                          <th class="column-title">T test L</th>
+                                                        
+                                          <th class="column-title">Chest</th>
+                                          <th class="column-title">Bicep</th>
+                                          <th class="column-title">Waist</th>
+                                          <th class="column-title">Hip</th>
+                                          <th class="column-title">Thigh</th>
+                         
+                                          <th class="column-title">10M</th>
+                                          <th class="column-title">40M</th>
+                                          <th class="column-title">60M</th>
+                                          <th class="column-title no-link last">
+                                            <span class="nobr"></span>
+                                          </th>
+                                        </tr>
+                                      </thead>
+                    
+                                      <tbody>
+                                        
+                                        
+                                        
+                                        {% for r in player.conditioning_set.all %}
+                                        <tr class="even pointer">
+                                          
+                                           <td class="">{{ r.created_at }}</td> 
+                                          <td class=" ">{{ r.bench }} kgs</td>
+                                          <td class=" ">{{ r.squats }} Kgs</td>
+                                          <td class=" ">{{ r.v_jumps }} Cm</td>
+                                          <td class=" ">{{ r.h_jumps }} Cm</td>
+                                          <td class=" ">{{ r.yoyo }} M</td>
+                                          <td class=" ">{{ r.t_test_right }} M</td>
+                                          <td class=" ">{{ r.t_test_left }} M</td>
+                    
+                                          <td class=" ">{{ r.chest }} Cm</td>
+                                          <td class=" ">{{ r.bicep }} Cm</td>
+                                          <td class=" ">{{ r.waist }} Cm</td>
+                                          <td class=" ">{{ r.hip }} Cm</td>
+                                          <td class=" ">{{ r.thigh }} Cm</td>
+                    
+                                          <td class=" ">{{ r.m10 }} Sec</td>
+                                          <td class=" ">{{ r.m40 }} Sec</td>
+                                          <td class=" ">{{ r.m60 }} Sec</td>
+                                          <td class=" last"> 
+                                            {% endfor %} 
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                    </div>
+                <!-- end user Conditioning -->
+              </div>
+              <div
+                role="tabpanel"
+                class="tab-pane fade"
+                id="tab_content5"
+                aria-labelledby="profile-tab"
+              >
+                <!-- start medical -->
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    
+                  
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Injury Date</th>
+                          <th>Injury Type</th>
+                          <th>Injury Comments</th>
+                          <th>Recovery Date</th>
+                          
+                        </tr>
+                      </thead>
+        
+                      <tbody>
+                        {% for medical in player.medicalreport_set.all %}
+                        <tr>
+                          <td>{{ medical.injury_date }}</td>
+                          <td>{{ medical.injury_type }}</td>
+                          <td>{{ medical.injury_comments }}</td>
+                          <td>{{ medical.recovery_date }}</td>
+        
+                          
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                   
+                  </div>
+                <!-- end medical-->
+              </div>
+
+              <div
+                role="tabpanel"
+                class="tab-pane fade"
+                id="tab_content4"
+                aria-labelledby="profile-tab2"
+              >
+                <!-- start stats -->
+                
+                      <h1>Stats go here</h1>
+                   
+                  
+
+                <!-- end stats-->
+              </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+

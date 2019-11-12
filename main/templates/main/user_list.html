@@ -1,0 +1,114 @@
+{% extends 'base.html' %} {% block content %}
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="row x_title">
+      <div class="col-md-6">
+        <h3>List of all Users <small></small></h3>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <ul class="nav navbar-right panel_toolbox">
+            <li>
+              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"
+                ><i class="fa fa-wrench"></i
+              ></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Settings 1</a></li>
+                <li><a href="#">Settings 2</a></li>
+              </ul>
+            </li>
+            <li>
+              <a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <button
+            class="create_user btn btn-primary"
+            type="button"
+            name="button"
+          >
+            Create User
+          </button>
+        </div>
+
+        <div class="x_content">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Name</th>
+                  <th>email</th>
+                  <th>Club</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for user in users %}
+                <tr>
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.first_name }} {{ user.last_name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.club }}</td>
+                  <td>
+                    <div class="text-center">
+                      <!-- Read book buttons -->
+                      <button
+                        type="button"
+                        class="player-details btn btn-sm btn-primary"
+                        data-id="{% url 'main:user_details' user.pk %}"
+                      >
+                        <span class="fa fa-eye"></span>
+                      </button>
+                      <!-- Update book buttons -->
+                      <button
+                        type="button"
+                        class="update-player btn btn-sm btn-primary"
+                        data-id="{% url 'main:update_user' user.pk %}"
+                      >
+                        <span class="fa fa-pencil"></span>
+                      </button>
+                      <!-- Delete book buttons -->
+                      <button
+                        type="button"
+                        class="delete-player btn btn-sm btn-danger"
+                        data-id="{% url 'main:delete_user' user.pk %}"
+                      >
+                        <span class="fa fa-trash"></span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if is_paginated %} {% include 'includes/pagination.html' %} {% endif %}
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Create book button -->
+
+  {% endblock %}
+</div>

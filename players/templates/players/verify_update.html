@@ -1,0 +1,127 @@
+{% load widget_tweaks %} {% load static %}
+
+<form method="post" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% for hidden_field in form.hidden_fields %}
+  {{ hidden_field }}
+  {% endfor %}
+
+  <div class="modal-header">
+    <h3 class="modal-title">Document Verification</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+
+  <div class="modal-body">
+
+    {{ form.player_name.as_hidden  }}
+    {{ form.date_of_birth.as_hidden  }}
+    {{ form.address.as_hidden }}
+    {{ form.phone_number.as_hidden }}
+    {{ form.email.as_hidden }}
+    {{ form.image.as_hidden }}
+    {{ form.kin.as_hidden }}
+    {{ form.kin_contact.as_hidden }}
+    {{ form.about_player.as_hidden }}
+    {{ form.club.as_hidden }}
+    {{ form.tertiary_institution.as_hidden }}
+    {{ form.high_school.as_hidden }}
+    {{ form.height.as_hidden }}
+    {{ form.weight.as_hidden }}
+    {{ form.skills.as_hidden }}
+    {{ form.injury_history.as_hidden }}
+    {{ form.allergy.as_hidden }}
+    {{ form.position.as_hidden }}
+    {{ form.id_number.as_hidden }}
+    {{ form.id_image.as_hidden }}
+    {{ form.birth_cert_no.as_hidden }}
+    {{ form.birth_cert_pdf.as_hidden }}
+    {{ form.passport.as_hidden }}
+    {{ form.passport_image.as_hidden }}
+
+
+
+    {% if player.birth_cert_pdf %}
+    <div class="row">
+
+      <div class="col-md-8">
+        <label for="{{ form.birth_cert_pdf.id_for_label }}"><span class="label label-primary">Birth Cert</span></label>
+        <a href="{{ player.birth_cert_pdf.url }}">{{ player.cert_name }} <span class="fa fa-download"></span></a>
+      </div>
+
+      <div class="col-md-4">
+        {% render_field form.check_cert %}
+      </div>
+    </div>
+    {% else %}
+    <div class="row">
+
+      <div class="col-md-8">
+        <label for="{{ form.birth_cert_pdf.id_for_label }}"><span class="label label-primary">Birth Cert</span></label>
+        <span class="label label-danger">Not Uploaded</span> <span class="fa fa-download"></span>
+      </div>
+
+
+    </div>
+    {% endif %}
+
+
+
+    {% if player.id_image %}
+    <div class="row">
+      <div class="col-md-8">
+        <label for="{{ form.id_image.id_for_label }}"><span class="label label-primary">National ID</span></label>
+        <a href="{{ player.id_image.url }}">{{ player.id_name }} <span class="fa fa-download"></span></a>
+      </div>
+
+      <div class="col-md-4">
+        {% render_field form.check_id %}
+      </div>
+    </div>
+
+    {% else %}
+
+    <div class="row">
+      <div class="col-md-8">
+        <label for="{{ form.id_image.id_for_label }}"><span class="label label-primary">National ID</span></label>
+        <span class="label label-danger">Not Uploaded</span> <span class="fa fa-download"></span>
+      </div>
+    </div>
+
+    {% endif %}
+
+
+    {% if player.passport_image %}
+    <div class="row">
+      <div class="col-md-8">
+        <label for="{{ form.passport_image.id_for_label }}"><span class="label label-primary">Passport</span> </label>
+        <a href="{{ player.passport_image.url }}"> {{ player.passport_name }} <span class="fa fa-download"></span></a>
+
+      </div>
+
+      <div class="col-md-4">
+        {% render_field form.check_passport %}
+      </div>
+
+    </div>
+
+    {% else %}
+
+    <div class="row">
+      <div class="col-md-8">
+        <label for="{{ form.passport_image.id_for_label }}"><span class="label label-primary">Passport</span> </label>
+        <span class="label label-danger">Not Uploaded</span> <span class="fa fa-download"></span>
+
+      </div>
+    </div>
+
+    {% endif %}
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="submit-btn btn btn-primary">Update</button>
+  </div>
+</form>

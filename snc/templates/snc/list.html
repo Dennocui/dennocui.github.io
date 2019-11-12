@@ -1,0 +1,108 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="row x_title">
+      <div class="col-md-6">
+        <h3>List of all SnC Reports <small></small></h3>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <ul class="nav navbar-right panel_toolbox">
+            <li>
+              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"
+                ><i class="fa fa-wrench"></i
+              ></a>
+            </li>
+            <li>
+              <a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <button
+            class="create-snc-report btn btn-primary"
+            type="button"
+            name="button"
+          >
+            Create Report
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-striped jambo_table bulk_action">
+            <thead>
+              <tr class="headings">
+                <th class="column-title">Date</th>
+                <th class="column-title">Player</th>
+                <th class="column-title">Bench</th>
+                <th class="column-title">Squats</th>
+                <th class="column-title">V Jumps</th>
+                <th class="column-title">H Jumps</th>
+                <th class="column-title">Yoyo</th>
+                <th class="column-title">T test R</th>
+                <th class="column-title">T test L</th>
+
+                <th class="column-title">Chest</th>
+                <th class="column-title">Bicep</th>
+                <th class="column-title">Waist</th>
+                <th class="column-title">Hip</th>
+                <th class="column-title">Thigh</th>
+
+                <th class="column-title">10M</th>
+                <th class="column-title">40M</th>
+                <th class="column-title">60M</th>
+                <th class="column-title no-link last">
+                  <span class="nobr"></span>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for r in conditionings %}
+              <tr class="even pointer">
+                <!-- <li>{{ r.player }}</li> -->
+                <td class="">{{ r.created_at }}</td>
+                 <td class="">{{ r.player  }}</td>  
+                <td class=" ">{{ r.bench }} kgs</td>
+                <td class=" ">{{ r.squats }} Kgs</td>
+                <td class=" ">{{ r.v_jumps }} Cm</td>
+                <td class=" ">{{ r.h_jumps }} Cm</td>
+                <td class=" ">{{ r.yoyo }} M</td>
+                <td class=" ">{{ r.t_test_right }} M</td>
+                <td class=" ">{{ r.t_test_left }} M</td>
+
+                <td class=" ">{{ r.chest }} Cm</td>
+                <td class=" ">{{ r.bicep }} Cm</td>
+                <td class=" ">{{ r.waist }} Cm</td>
+                <td class=" ">{{ r.hip }} Cm</td>
+                <td class=" ">{{ r.thigh }} Cm</td>
+
+                <td class=" ">{{ r.m10 }} Sec</td>
+                <td class=" ">{{ r.m40 }} Sec</td>
+                <td class=" ">{{ r.m60 }} Sec</td>
+                <td class=" last">
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if is_paginated %} {% include 'includes/pagination.html' %} {% endif %}
+</div>
+
+{% endblock %}

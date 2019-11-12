@@ -1,0 +1,386 @@
+{% load widget_tweaks %} {% load crispy_forms_tags %}
+
+<form method="post" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="modal-header">
+    <h3 class="modal-title">Create</h3>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+
+    <div class="row">
+      <span class="section">Personal Info</span>
+      <div class="col-md-4">
+        <label for="{{ form.player_name.id_for_label }}">{{ form.player_name.label }}</label>
+
+        {% render_field form.player_name class="form-control" placeholder=form.player_name.label %}
+
+        <div class="{% if form.player_name.errors %} invalid{% endif %}">
+          {% for error in form.player_name.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label
+          for="{% render_field form.date_of_birth.id_for_label %}">{% render_field form.date_of_birth.label %}</label>
+        <div class="input-group date" id="myDatepicker">
+          {% render_field form.date_of_birth class="form-control" placeholder=form.date_of_birth.label %}
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+
+        <div class="{% if form.date_of_birth.errors %} invalid{% endif %}">
+          {% for error in form.date_of_birth.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label for="{{ form.address.id_for_label }}">{{ form.address.label }}</label>
+
+        {% render_field form.address class="form-control" placeholder=form.address.label %}
+
+        <div class="{% if form.address.errors %} invalid{% endif %}">
+          {% for error in form.address.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <label for="{{ form.phone_number.id_for_label }}">{{ form.phone_number.label }}</label>
+
+        {% render_field form.phone_number class="form-control" placeholder=form.phone_number.label %}
+
+        <div class="{% if form.phone_number.errors %} invalid{% endif %}">
+          {% for error in form.phone_number.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+
+        {% render_field form.email class="form-control" placeholder=form.email.label %}
+
+        <div class="{% if form.email.errors %} invalid{% endif %}">
+          {% for error in form.email.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+
+        {% render_field form.image class="form-control" placeholder=form.image.label %}
+
+        <div class="{% if form.image.errors %} invalid{% endif %}">
+          {% for error in form.image.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label for="{{ form.kin.id_for_label }}">{{ form.kin.label }}</label>
+
+        {% render_field form.kin class="form-control" placeholder=form.kin.label %}
+
+        <div class="{% if form.kin.errors %} invalid{% endif %}">
+          {% for error in form.kin.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="{{ form.kin_contact.id_for_label }}">{{ form.kin_contact.label }}</label>
+
+        {% render_field form.kin_contact class="form-control" placeholder=form.kin_contact.label %}
+
+        <div class="{% if form.kin_contact.errors %} invalid{% endif %}">
+          {% for error in form.kin_contact.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="{{ form.about_player.id_for_label }}">{{ form.about_player.label }}</label>
+
+        {% render_field form.about_player class="form-control" placeholder=form.about_player.label %}
+
+        <div class="{% if form.about_player.errors %} invalid{% endif %}">
+          {% for error in form.about_player.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label for="{{ form.club.id_for_label }}">{{ form.club.label }}</label>
+
+        {% render_field form.club class="form-control" placeholder=form.club.label %}
+
+        <div class="{% if form.club.errors %} invalid{% endif %}">
+          {% for error in form.club.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="{{ form.tertiary_institution.id_for_label }}">{{ form.tertiary_institution.label }}</label>
+
+        {% render_field form.tertiary_institution class="form-control" placeholder=form.tertiary_institution.label %}
+
+        <div class="{% if form.tertiary_institution.errors %} invalid{% endif %}">
+          {% for error in form.tertiary_institution.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="{{ form.high_school.id_for_label }}">{{ form.high_school.label }}</label>
+
+        {% render_field form.high_school class="form-control" placeholder=form.high_school.label %}
+
+        <div class="{% if form.high_school.errors %} invalid{% endif %}">
+          {% for error in form.high_school.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <br>
+
+
+    <span class="section">Physical Attributes</span>
+    <div class="row">
+
+      <div class="col-md-2">
+        <label for="{{ form.height.id_for_label }}">{{ form.height.label }}</label>
+
+        {% render_field form.height class="form-control" placeholder=form.height.label %}
+
+        <div class="{% if form.height.errors %} invalid{% endif %}">
+          {% for error in form.height.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <label for="{{ form.weight.id_for_label }}">{{ form.weight.label }}</label>
+
+        {% render_field form.weight class="form-control" placeholder=form.weight.label %}
+
+        <div class="{% if form.weight.errors %} invalid{% endif %}">
+          {% for error in form.weight.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <label for="{{ form.skills.id_for_label }}">{{ form.skills.label }}</label>
+
+        {% render_field form.skills class="form-control" placeholder=form.skills.label %}
+
+        <div class="{% if form.skills.errors %} invalid{% endif %}">
+          {% for error in form.skills.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+
+      <div class="col-md-4">
+        <label for="{{ form.injury_history.id_for_label }}">{{ form.injury_history.label }}</label>
+
+        {% render_field form.injury_history class="form-control" placeholder=form.injury_history.label %}
+
+        <div class="{% if form.injury_history.errors %} invalid{% endif %}">
+          {% for error in form.injury_history.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="{{ form.allergy.id_for_label }}">{{ form.allergy.label }}</label>
+
+        {% render_field form.allergy class="form-control" placeholder=form.allergy.label %}
+
+        <div class="{% if form.allergy.errors %} invalid{% endif %}">
+          {% for error in form.allergy.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <label for="{{ form.position.id_for_label }}">{{ form.position.label }}</label>
+
+        {% render_field form.position class="form-control" placeholder=form..label %}
+
+        <div class="{% if form.position.errors %} invalid{% endif %}">
+          {% for error in form.position.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+    <br>
+
+
+    <div class="row">
+      <span class="section">Identification</span>
+
+      <div class="col-md-4">
+        <label for="{{ form.id_number.id_for_label }}">{{ form.id_number.label }}</label>
+
+        {% render_field form.id_number class="form-control" placeholder=form.id_number.label  %}
+
+        <div class="{% if form.id_number.errors %} invalid{% endif %}">
+          {% for error in form.id_number.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-5">
+        <label for="{{ form.id_image.id_for_label }}">{{ form.id_image.label }}</label>
+
+        {% render_field form.id_image class="form-control" placeholder=form.id_image.label %}
+
+        <div class="{% if form.id_image.errors %} invalid{% endif %}">
+          {% for error in form.id_image.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <label for="{{ form.birth_cert_no.id_for_label }}">{{ form.birth_cert_no.label }}</label>
+
+        {% render_field form.birth_cert_no class="form-control" placeholder=form.birth_cert_no.label %}
+
+        <div class="{% if form.birth_cert_no.errors %} invalid{% endif %}">
+          {% for error in form.birth_cert_no.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-5">
+        <label for="{{ form.birth_cert_pdf.id_for_label }}">{{ form.birth_cert_pdf.label }}</label>
+
+        {% render_field form.birth_cert_pdf class="form-control" placeholder=form.birth_cert_pdf.label %}
+
+        <div class="{% if form.birth_cert_pdf.errors %} invalid{% endif %}">
+          {% for error in form.birth_cert_pdf.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <label for="{{ form.passport.id_for_label }}">{{ form.passport.label }}</label>
+
+        {% render_field form.passport class="form-control" placeholder=form.passport.label %}
+
+        <div class="{% if form.passport.errors %} invalid{% endif %}">
+          {% for error in form.passport.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+      <div class="col-md-5">
+        <label for="{{ form.passport_image.id_for_label }}">{{ form.passport_image.label }}</label>
+
+        {% render_field form.passport_image class="form-control" placeholder=form.passport_image.label %}
+
+        <div class="{% if form.passport_image.errors %} invalid{% endif %}">
+          {% for error in form.passport_image.errors %}
+          <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+
+
+  <br>
+
+
+
+
+
+
+  <div class="modal-footer">
+    <button type="button" class="submit-btn btn btn-primary">Create</button>
+  </div>
+
+  </div>
+</form>
+
+
+<script>
+  $("#myDatepicker").datetimepicker({
+    format: "YYYY-MM-DD"
+  });
+</script>

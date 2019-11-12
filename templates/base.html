@@ -1,0 +1,346 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/ico" />
+
+  <title>Ceres Player Tracker |</title>
+
+  <!-- Bootstrap -->
+  <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- NProgress -->
+  <link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet" />
+  <!-- iCheck -->
+  <link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet" />
+
+  <!-- bootstrap-progressbar -->
+  <link href="{% static 'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet" />
+  <!-- JQVMap -->
+  <link href="{% static 'vendors/jqvmap/dist/jqvmap.min.css' %}" rel="stylesheet" />
+  <!-- bootstrap-daterangepicker -->
+  <link href="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet" />
+  <!-- bootstrap-datetimepicker -->
+  <link href="{% static 'vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css' %}"
+    rel="stylesheet" />
+
+  <!-- FullCalendar -->
+  <link href="{% static 'vendors/fullcalendar/dist/fullcalendar.min.css' %}" rel="stylesheet" />
+  <!-- <link href="{% static 'vendors/fullcalendar/dist/fullcalendar.print.css' %}" rel="stylesheet" media="print" /> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+
+  <!-- Custom Theme Style -->
+  <link href="{% static  'build/css/custom.min.css' %}" rel="stylesheet" />
+</head>
+
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <!--side navigation-->
+      {% include 'includes/side_navbar.html' %}
+      <!--/side navigation-->
+
+      <!-- top navigation -->
+      {% include 'includes/top_navbar.html' %}
+      <!-- /top navigation -->
+
+      <!-- page content -->
+      <div class="right_col" role="main">
+        {% block content %}
+
+        <h1>
+          This header tag , will be overwritten by any child template that
+          defines a block content
+        </h1>
+
+        {% endblock %}
+      </div>
+      <!-- /page content -->
+
+      <!-- footer content -->
+      <footer class="footer_fixed">
+        <div class="pull-right">
+          Ceres - Admin Dashboard by <a href="#">Dennis Ngari </a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="{% static  'vendors/jquery/dist/jquery.min.js' %}"></script>
+  <!-- Bootstrap -->
+  <script src="{% static  'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <!-- FastClick -->
+  <script src="{% static  'vendors/fastclick/lib/fastclick.js' %}"></script>
+  <!-- NProgress -->
+  <script src="{% static  'vendors/nprogress/nprogress.js' %}"></script>
+  <!-- Chart.js -->
+  <script src="{% static  'vendors/Chart.js/dist/Chart.min.js' %}"></script>
+
+  <!-- gauge.js -->
+  <script src="{% static  'vendors/gauge.js/dist/gauge.min.js' %}"></script>
+  <!-- bootstrap-progressbar -->
+  <script src="{% static  'vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+  <!-- iCheck -->
+  <script src="{% static  'vendors/iCheck/icheck.min.js' %}"></script>
+  <!-- Skycons -->
+  <script src="{% static  'vendors/skycons/skycons.js' %}"></script>
+  <!-- Flot -->
+  <script src="{% static  'vendors/Flot/jquery.flot.js' %}"></script>
+  <script src="{% static  'vendors/Flot/jquery.flot.pie.js' %}"></script>
+  <script src="{% static  'vendors/Flot/jquery.flot.time.js' %}"></script>
+  <script src="{% static  'vendors/Flot/jquery.flot.stack.js' %}"></script>
+  <script src="{% static  'vendors/Flot/jquery.flot.resize.js' %}"></script>
+  <!-- Flot plugins -->
+  <script src="{% static  'vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}"></script>
+  <script src="{% static  'vendors/flot-spline/js/jquery.flot.spline.min.js' %}"></script>
+  <script src="{% static  'vendors/flot.curvedlines/curvedLines.js' %}"></script>
+  <!-- DateJS -->
+  <script src="{% static  'vendors/DateJS/build/date.js' %}"></script>
+  <!-- JQVMap -->
+  <script src="{% static  'vendors/jqvmap/dist/jquery.vmap.js' %}"></script>
+  <script src="{% static  'vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+  <script src="{% static  'vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}"></script>
+  <!-- bootstrap-daterangepicker -->
+  <script src="{% static  'vendors/moment/min/moment.min.js' %}"></script>
+  <script src="{% static  'vendors/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+  <!-- bootstrap-datetimepicker -->
+  <script src="{% static 'vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js' %}"></script>
+  <!-- FullCalendar -->
+  <script src="{% static  'vendors/moment/min/moment.min.js' %}"></script>
+  <!-- <script src="{% static  'vendors/fullcalendar/dist/fullcalendar.min.js' %}"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="{% static  'build/js/custom.min.js' %}"></script>
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      var calendar = $('#calendar').fullCalendar({
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        events: [
+          {% for event in events %}
+                        {
+          title: "{{ event.name}}",
+          start: '{{ event.start|date:"Y-m-d" }}',
+          end: '{{ event.end|date:"Y-m-d" }}',
+          id: '{{ event.id }}',
+        },
+        {% endfor %}
+                ],
+      selectable: true,
+      selectHelper: true,
+      editable: true,
+      eventLimit: true,
+      select: function (start, end, allDay) {
+        var title = prompt("Enter Event Title");
+        if (title) {
+          var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+          var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+          $.ajax({
+            type: "GET",
+            url: 'main/add_event',
+            data: { 'title': title, 'start': start, 'end': end },
+            dataType: "json",
+            success: function (data) {
+              calendar.fullCalendar('refetchEvents');
+              alert("Added Successfully");
+            },
+            failure: function (data) {
+              alert('There is a problem!!!');
+            }
+          });
+        }
+      },
+      eventResize: function (event) {
+        var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+        var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+        var title = event.title;
+        var id = event.id;
+        $.ajax({
+          type: "GET",
+          url: '/update',
+          data: { 'title': title, 'start': start, 'end': end, 'id': id },
+          dataType: "json",
+          success: function (data) {
+            calendar.fullCalendar('refetchEvents');
+            alert('Event Update');
+          },
+          failure: function (data) {
+            alert('There is a problem!!!');
+          }
+        });
+      },
+
+      eventDrop: function (event) {
+        var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+        var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+        var title = event.title;
+        var id = event.id;
+        $.ajax({
+          type: "GET",
+          url: '/update',
+          data: { 'title': title, 'start': start, 'end': end, 'id': id },
+          dataType: "json",
+          success: function (data) {
+            calendar.fullCalendar('refetchEvents');
+            alert('Event Update');
+          },
+          failure: function (data) {
+            alert('There is a problem!!!');
+          }
+        });
+      },
+
+      eventClick: function (event) {
+        if (confirm("Are you sure you want to remove it?")) {
+          var id = event.id;
+          $.ajax({
+            type: "GET",
+            url: '/remove',
+            data: { 'id': id },
+            dataType: "json",
+            success: function (data) {
+              calendar.fullCalendar('refetchEvents');
+              alert('Event Removed');
+            },
+            failure: function (data) {
+              alert('There is a problem!!!');
+            }
+          });
+        }
+      },
+
+            });
+        });
+
+  </script>
+
+
+  <script>
+    $("#myDatepicke3").datetimepicker({
+      format: "YYYY-MM-DD"
+    });
+  </script>
+
+  <script>
+    $("#myDatepicker2").datetimepicker({
+      format: "YYYY-MM-DD"
+    });
+  </script>
+
+
+  <!-- Script untuk memanggil library Highcharts -->
+  <script>
+    Highcharts.chart('container', {
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'Count Per Position'
+      },
+      xAxis: {
+        categories: {{ positions| safe }}
+          },
+      series: [{
+        name: 'Player Count',
+        data: {{ player_series_data }},
+      color: 'green'
+          }]
+      });
+  </script>
+
+  <script>
+    Highcharts.chart('container1', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Count Per CLub'
+      },
+      xAxis: {
+        categories: {{ clubs| safe }}
+          },
+      series: [{
+        name: 'Player Count',
+        data: {{ player_data }},
+      color: 'blue'
+          }]
+      });
+  </script>
+
+  <script type="text/javascript">
+    $(function () {
+      // Create  button
+      $(".create-player").modalForm({
+        formURL: "{% url 'players:create_player' %}"
+      });
+      $(".create-referee").modalForm({
+        formURL: ""
+      });
+      $(".create-club").modalForm({
+        formURL: "{% url 'main:create_club' %}"
+      });
+      $(".create-medical-report").modalForm({
+        formURL: "{% url 'medical:create_medical' %}"
+      });
+      $(".create-snc-report").modalForm({
+        formURL: "{% url 'snc:create_conditioning' %}"
+      });
+      $(".create-user").modalForm({
+        formURL: "{% url 'accounts:create_user' %}"
+      });
+      $(".club-admin").modalForm({ formURL: "{% url 'main:club_admin' %}" });
+
+      // Update buttons
+      $(".update-player").each(function () {
+        $(this).modalForm({ formURL: $(this).data("id") });
+      });
+
+      $(".update-verify").each(function () {
+        $(this).modalForm({ formURL: $(this).data("id") });
+      });
+
+      // Read  buttons
+      $(".player-details").each(function () {
+        $(this).modalForm({ formURL: $(this).data("id") });
+      });
+
+      $(".club-view").each(function () {
+        $(this).modalForm({ formURL: $(this).data("id") });
+      });
+
+      $(".snc-details").each(function () {
+        $(this).modalForm({ formURL: $(this).data("id") });
+      });
+
+      // Delete  buttons
+      $(".delete-player").each(function () {
+        $(this).modalForm({ formURL: $(this).data("id") });
+      });
+    });
+  </script>
+</body>
+
+</html>

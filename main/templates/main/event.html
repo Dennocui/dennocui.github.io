@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+ 
+
+{% block content %}
+
+
+
+  
+    <div class="row x_title">
+      <div class="col-md-6">
+        <h3>Events <small></small></h3>
+      </div>
+    </div>
+
+   
+<div class="x_content">
+          
+
+        <form method="post" action="">
+        {% csrf_token %}
+        
+                <div class="form-body">
+              
+                    <div class="{% if form.player.non_field_errors %}invalid{% endif %} mb-2">
+                      {% for error in form.player.non_field_errors %}
+                      {{ error }}
+                      {% endfor %}
+                    </div>
+              
+                <div class="row">
+                    <div class="form-group">
+              
+                      <div class="col-md-5">
+                        <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+              
+                        {% render_field form.title class="form-control" placeholder=form.title.label %}
+              
+                        <div class="{% if form.title.errors %} invalid{% endif %}">
+                          {% for error in form.title.errors %}
+                          <p class="help-block">{{ error }}</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+                                  
+              <div class="col-md-5">
+                    <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+            
+                    {% render_field form.description class="form-control" placeholder=form.description.label %}
+            
+                    <div class="{% if form.description.errors %} invalid{% endif %}">
+                      {% for error in form.description.errors %}
+                      <p class="help-block">{{ error }}</p>
+                      {% endfor %}
+                    </div>
+           </div>
+            
+              
+                      <div class="col-md-5">
+                        <label
+                          for="{% render_field form.start_time.id_for_label %}">{% render_field form.start_time.label %}</label>
+                        <div class="input-group date" id="myDatepicker2">
+                          {% render_field form.start_time class="form-control" placeholder=form.start_time.label %}
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                        </div>
+              
+                        <div class="{% if form.start_time.errors %} invalid{% endif %}">
+                          {% for error in form.start_time.errors %}
+                          <p class="help-block">{{ error }}</p>
+                          {% endfor %}
+                        </div>
+                      </div>
+              
+                      <div class="col-md-5">
+                        <label
+                          for="{% render_field form.end_time.id_for_label %}">{% render_field form.end_time.label %}</label>
+                        <div class="input-group date" id="myDatepicker3">
+                          {% render_field form.end_time class="form-control" placeholder=form.end_time.label %}
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                        </div>
+              
+                        <div class="{% if form.end_time.errors %} invalid{% endif %}">
+                          {% for error in form.end_time.errors %}
+                          <p class="help-block">{{ error }}</p>
+                          {% endfor %}
+                        </div>
+              
+                      </div>
+
+                      </div>
+
+
+              
+              
+              
+                    </div>
+              
+                  
+                
+              
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <a href="{% url 'main:calendar' %}" class="btn btn-primary" type="button">Cancel</a>
+                        <button class="btn btn-primary" type="reset">Reset</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                      </div>
+                    </div>
+                
+                 
+                </div>
+               
+              </form>
+            </div>
+            
+
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+
+{% endblock %}
+

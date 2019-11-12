@@ -1,0 +1,117 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="row x_title">
+      <div class="col-md-6">
+        <h3>List of all Clubs <small></small></h3>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <ul class="nav navbar-right panel_toolbox">
+            <li>
+              <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+            </li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"
+                ><i class="fa fa-wrench"></i
+              ></a>
+            </li>
+            <li>
+              <a class="close-link"><i class="fa fa-close"></i></a>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
+          <button
+            class="create-club btn btn-primary"
+            type="button"
+            name="button"
+          >
+            Create Club
+          </button>
+        </div>
+
+        <div class="x_content">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Club Name</th>
+                  <th>Coach (Conatct)</th>
+                  <th>TM (Contact)</th>
+                  <th>Main Grounds</th>
+                  <th>Alt Grounds</th>
+                  <th>Region</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for club in clubs %}
+                <tr>
+                  <td>{{ club.name }}</td>
+                  <td>{{ club.coach_name }} - ({{ club.coach_contact }})</td>
+                  <td>
+                    {{ club.team_manager }} - ({{ club.team_manager_contact }})
+                  </td>
+                  <td>{{ club.main_grounds }}</td>
+                  <td>{{ club.alt_grounds }}</td>
+                  <td>{{ club.region }}</td>
+
+                  <td>
+                    <div class="text-center">
+                      <!-- Read book buttons -->
+                      <button
+                        type="button"
+                        class="club-view btn btn-sm btn-primary"
+                        data-id="{% url 'main:club_details' club.pk %}"
+                      >
+                        <span class="fa fa-eye"></span>
+                      </button>
+                      <!-- Update book buttons -->
+                      <button
+                        type="button"
+                        class="update-player btn btn-sm btn-primary"
+                        data-id="{% url 'main:update_club' club.pk %}"
+                      >
+                        <span class="fa fa-pencil"></span>
+                      </button>
+                      <!-- Delete book buttons -->
+                      <button
+                        type="button"
+                        class="delete-player btn btn-sm btn-danger"
+                        data-id="{% url 'main:delete_club' club.pk %}"
+                      >
+                        <span class="fa fa-trash"></span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if is_paginated %} {% include 'includes/pagination.html' %} {% endif %}
+
+  <!-- Create book button -->
+</div>
+
+{% endblock %}
