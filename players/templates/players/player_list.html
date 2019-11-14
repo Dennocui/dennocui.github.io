@@ -1,167 +1,154 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load widget_tweaks %}
 {% block content %}
 
 
 
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="row x_title">
+    <div class="col-md-6">
+      <h3>List of all Players <small></small></h3>
+    </div>
+  </div>
+
   <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="row x_title">
-      <div class="col-md-6">
-        <h3>List of all Players <small></small></h3>
-      </div>
-    </div>
+    <div class="x_panel">
+      <div class="x_title">
 
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="x_panel">
-        <div class="x_title">
-         
-          <div class="clearfix"></div>
-          <button
-            class="create-player btn btn-primary"
-            type="button"
-            name="button"
-          >
-            Create Player
-          </button>
+        <div class="clearfix"></div>
+        <button class="create-player btn btn-primary" type="button" name="button">
+          Create Player
+        </button>
 
-          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
-            <span class="glyphicon glyphicon-search"></span>
-            Search Here...</button>
-          <div id="demo" class="collapse">
-            <form method="get">
-              <div class="well">
-                <h4 style="margin-top: 0">Filter</h4>
-                <div class="row">
-                  <div class="form-group col-sm-4 col-md-3">
-                    {{ filter.form.player_name.label_tag }}
-                    {% render_field filter.form.player_name class="form-control" %}
-                  </div>
-                  <div class="form-group col-sm-4 col-md-3">
-                    {{ filter.form.position.label_tag }}
-                    {% render_field filter.form.position class="form-control" %}
-                  </div>
-                  <div class="form-group col-sm-4 col-md-3">
-                    {{ filter.form.club.label_tag }}
-                    {% render_field filter.form.club class="form-control" %}
-                  </div>
-               
-                  
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
+          <span class="glyphicon glyphicon-search"></span>
+          Search Here...</button>
+        <div id="demo" class="collapse">
+          <form method="get">
+            <div class="well">
+              <h4 style="margin-top: 0">Filter</h4>
+              <div class="row">
+                <div class="form-group col-sm-4 col-md-3">
+                  {{ filter.form.player_name.label_tag }}
+                  {% render_field filter.form.player_name class="form-control" %}
                 </div>
-                <button type="submit" class="btn btn-primary">
-                  <span class="glyphicon glyphicon-search"></span> Search
-                </button>
-          
-                <a href="{% url 'players:player_list' %}" type="reset" class="btn btn-info">
-                  <span class="glyphicon glyphicon-refresh"></span> Reset
-                </a>
+                <div class="form-group col-sm-4 col-md-3">
+                  {{ filter.form.position.label_tag }}
+                  {% render_field filter.form.position class="form-control" %}
+                </div>
+                <div class="form-group col-sm-4 col-md-3">
+                  {{ filter.form.club.label_tag }}
+                  {% render_field filter.form.club class="form-control" %}
+                </div>
+
+
               </div>
-            </form>
-          </div>
+              <button type="submit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-search"></span> Search
+              </button>
+
+              <a href="{% url 'players:player_list' %}" type="reset" class="btn btn-info">
+                <span class="glyphicon glyphicon-refresh"></span> Reset
+              </a>
+            </div>
+          </form>
         </div>
+      </div>
 
-        <div class="x_content">
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Player Name</th>
-                  <th>Email</th>
-                  <th>Phone No</th>
-                  <th>Height / Weight </th>
-                  <th>Position</th>
-                  <th>Age</th>
-                  <th>Status</th>
-                  
-                  <th>Actions</th>
-                </tr>
-              </thead>
+      <div class="x_content">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Player Name</th>
+                <th>Email</th>
+                <th>Phone No</th>
+                <th>Height / Weight </th>
+                <th>Position</th>
+                <th>Age</th>
+                <th>Status</th>
 
-              <tbody>
-                {% for player in filter.qs %}
-                <tr>
-                  <td>{{ player.player_name }}</td>
-                  <td>{{ player.email }}</td>
-                  <td>{{ player.phone_number }}</td>
-                  <td>{{ player.height }} Cms / {{ player.weight }} Kgs</td>
-                  <td>{{ player.position }}</td>
-                  <td>{{ player.age }}</td>
+                <th>Actions</th>
+              </tr>
+            </thead>
 
-                                      <td>  
-                    {% if player.verification == 1 %}
-  
-                    <span class="label label-success">Verified</span>
-  
-                    {% elif player.verification == 2   %}
-  
-                    <span class="label label-info">only 2</span>
-  
-                    {% elif player.verification == 3 %}
+            <tbody>
+              {% for player in filter.qs %}
+              <tr>
+                <td>{{ player.player_name }}</td>
+                <td>{{ player.email }}</td>
+                <td>{{ player.phone_number }}</td>
+                <td>{{ player.height }} Cms / {{ player.weight }} Kgs</td>
+                <td>{{ player.position }}</td>
+                <td>{{ player.age }}</td>
 
-                     <span class="label label-warning">only 1</span>
+                <td>
+                  {% if player.verification == 1 %}
 
-                    {% elif player.verification == 4 %}
-                    <span class="label label-danger">Nothing</span>
-  
-                    {% endif %}
-  
-                    
-                    </td>
-  
+                  <span class="label label-success">Verified</span>
+
+                  {% elif player.verification == 2   %}
+
+                  <span class="label label-info">only 2</span>
+
+                  {% elif player.verification == 3 %}
+
+                  <span class="label label-warning">only 1</span>
+
+                  {% elif player.verification == 4 %}
+                  <span class="label label-danger">Nothing</span>
+
+                  {% endif %}
 
 
-                  
-                  <td>
-                    <div class="text-center">
-                      <!-- Read Player buttons -->
-                      
-                      <button
-                        type="button"
-                        class="player-details btn btn-sm btn-success"
-                        data-id="{% url 'players:player_details' player.pk %}"
-                      >
-                        <span class="fa fa-eye"></span>
-                      </button>
-                      <!-- Update Player buttons -->
-                      <button
-                        type="button"
-                        class="update-player btn btn-sm btn-primary " 
-                        data-id="{% url 'players:update_player' player.pk %}"
-                      >
-                        <span class="fa fa-pencil"></span>
-                      </button>
-                      <!-- Delete Player buttons -->
-                      <button
-                        type="button"
-                        class="delete-player btn btn-sm btn-danger"
-                        data-id="{% url 'players:delete_player' player.pk %}"
-                      >
-                        <span class="fa fa-trash"></span>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                {% endfor %}
-              </tbody>
-              
-            </table>
-            {% if is_paginated %} {% include 'includes/pagination.html' %} {% endif %}
-          </div>
+                </td>
+
+
+
+
+                <td>
+                  <div class="text-center">
+                    <!-- Read Player buttons -->
+
+                    <button type="button" class="player-details btn btn-sm btn-success"
+                      data-id="{% url 'players:player_details' player.pk %}">
+                      <span class="fa fa-eye"></span>
+                    </button>
+                    <!-- Update Player buttons -->
+                    <button type="button" class="update-player btn btn-sm btn-primary "
+                      data-id="{% url 'players:update_player' player.pk %}">
+                      <span class="fa fa-pencil"></span>
+                    </button>
+                    <!-- Delete Player buttons -->
+                    <button type="button" class="delete-player btn btn-sm btn-danger"
+                      data-id="{% url 'players:delete_player' player.pk %}">
+                      <span class="fa fa-trash"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+
+          </table>
+          {% if is_paginated %} {% include 'includes/pagination.html' %} {% endif %}
         </div>
       </div>
     </div>
-    
   </div>
 
-  
+</div>
 
-  <div class="modal fade"  role="dialog" id="modal">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content"></div>
-    </div>
+
+
+<div class="modal fade" role="dialog" id="modal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content"></div>
   </div>
+</div>
 
-  
-  <!-- Create book button -->
 
-  {% endblock %}
+<!-- Create book button -->
+
+{% endblock %}
 </div>
