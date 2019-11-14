@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -34,16 +35,16 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Player Name</th>
-                                    <th>Catch Pass</th>
+                                    <th>Player</th>
+                                    <th>C&P</th>
                                     <th>Tackle</th>
                                     <th>Post Tackle</th>
                                     <th>Carry</th>
                                     <th>Clean Out</th>
                                     <th>Offload</th>
-                                    <th>One on One</th>
+                                    <th>1v1</th>
                                     <th>Support</th>
-                                    <th>High Ball</th>
+                                    <th>H.Ball</th>
                                     <th>Kicking</th>
                                     <th>Comment</th>
                                     <th>Created At</th>
@@ -67,7 +68,7 @@
                                     <td>{{ l.high_ball }}</td>
                                     <td>{{ l.kicking }}</td>
                                     <td>{{ l.commment }}</td>
-                                    <td>{{ l.created_at }}</td>
+                                    <td>{{ l.created_at|date:'d M Y' }}</td>
 
 
                                     </td>
@@ -75,7 +76,7 @@
                                     <td>
                                         <div class="text-center">
                                             <!-- Read book buttons -->
-                                            <button type="button" class="technical-details btn btn-sm btn-primary"
+                                            <button type="button" class="technical-details btn btn-sm btn-success"
                                                 data-id="{% url 'snc:technical_details' l.pk %}">
                                                 <span class="fa fa-eye"></span>
                                             </button>

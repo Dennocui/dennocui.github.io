@@ -54,7 +54,7 @@ class TechnicalSkill(models.Model):
     one_on_one = models.CharField('One on One', max_length=15, choices=SKILL_LEVEL, default=WORKON,)
     support = models.CharField('Support Play',max_length=15, choices=SKILL_LEVEL, default=WORKON,)
     high_ball = models.CharField('High Ball', max_length=15, choices=SKILL_LEVEL, default=WORKON,)
-    kicking = models.CharField('Kicking(Grubber/Punt/Chip)', max_length=15, choices=SKILL_LEVEL, null=True,)
+    kicking = models.CharField('Kicking(Grubber/Punt/Chip)', max_length=15, choices=SKILL_LEVEL, blank=True,)
     commment = models.TextField()
 
     created_at = models.DateTimeField('Date Created', auto_now=True, auto_now_add=False)
@@ -98,7 +98,7 @@ class TacticleSkill(models.Model):
 class PhysicalSkill(models.Model):
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
     
-    body_weight = models.DecimalField('Body Weight',max_digits=5, decimal_places=2)
+    body_weight = models.IntegerField('Body Weight',)
     bench_press = models.IntegerField('Bench Press(1RM)',)
     bent_over_row = models.IntegerField('Bent Over Row',)
     deadlift = models.IntegerField('Deadlift',)

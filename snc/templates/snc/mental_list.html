@@ -34,7 +34,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Player Name</th>
+                                    <th>Player</th>
                                     <th>Self Drive</th>
                                     <th>Readiness</th>
                                     <th>Focus</th>
@@ -59,7 +59,7 @@
                                     <td>{{ l.resilience }}</td>
                                     <td>{{ l.work_ethic }}</td>
                                     <td>{{ l.mental_commment }}</td>
-                                    <td>{{ l.created_at }}</td>
+                                    <td>{{ l.created_at|date:'d M Y' }}</td>
 
 
                                     </td>
@@ -67,7 +67,7 @@
                                     <td>
                                         <div class="text-center">
                                             <!-- Read book buttons -->
-                                            <button type="button" class="mental-details btn btn-sm btn-primary"
+                                            <button type="button" class="mental-details btn btn-sm btn-success"
                                                 data-id="{% url 'snc:mental_details' l.pk %}">
                                                 <span class="fa fa-eye"></span>
                                             </button>

@@ -34,17 +34,17 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Player Name</th>
+                                    <th>Player</th>
                                     <th>Positioning </th>
                                     <th>Gameplan</th>
                                     <th>Workrate</th>
-                                    <th>Tactical Awareness</th>
-                                    <th>Communication</th>
-                                    <th>Scrummaging</th>
+                                    <th>T.Awareness</th>
+                                    <th>Comm</th>
+                                    <th>Scrum</th>
                                     <th>Throwing</th>
-                                    <th>Kicking Post</th>
+                                    <th>Kicking</th>
                                     <th>Commment</th>
-                                    <th>Created At</th>
+                                    <th>Created</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -63,7 +63,7 @@
                                     <td>{{ l.throwing }}</td>
                                     <td>{{ l.kicking_post }}</td>
                                     <td>{{ l.tacticle_commment }}</td>
-                                    <td>{{ l.created_at }}</td>
+                                    <td>{{ l.created_at|date:'d M Y' }}</td>
 
 
                                     </td>
@@ -71,7 +71,7 @@
                                     <td>
                                         <div class="text-center">
                                             <!-- Read book buttons -->
-                                            <button type="button" class="tacticle-details btn btn-sm btn-primary"
+                                            <button type="button" class="tacticle-details btn btn-sm btn-success"
                                                 data-id="{% url 'snc:tacticle_details' l.pk %}">
                                                 <span class="fa fa-eye"></span>
                                             </button>

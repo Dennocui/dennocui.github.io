@@ -34,9 +34,9 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>Player Name</th>
-                                    <th>Body weight</th>
-                                    <th>Bench press</th>
+                                    <th>Player</th>
+                                    <th>Body Weight</th>
+                                    <th>B.Press</th>
                                     <th>B.O.R</th>
                                     <th>Deadlift</th>
                                     <th>Squats</th>
@@ -44,7 +44,7 @@
                                     <th>40M</th>
                                     <th>Yoyo</th>
                                     <th>Comments</th>
-                                    <th>Created At</th>
+                                    <th>Created</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -63,7 +63,7 @@
                                     <td>{{ l.m40 }}</td>
                                     <td>{{ l.yoyo }}</td>
                                     <td>{{ l.physical_commment }}</td>
-                                    <td>{{ l.created_at }}</td>
+                                    <td>{{ l.created_at|date:'d M Y' }}</td>
 
 
                                     </td>
@@ -71,7 +71,7 @@
                                     <td>
                                         <div class="text-center">
                                             <!-- Read book buttons -->
-                                            <button type="button" class="physical-details btn btn-sm btn-primary"
+                                            <button type="button" class="physical-details btn btn-sm btn-success"
                                                 data-id="{% url 'snc:physical_details' l.pk %}">
                                                 <span class="fa fa-eye"></span>
                                             </button>
@@ -82,7 +82,7 @@
                                             </button>
                                             <!-- Delete book buttons -->
                                             <!-- <button type="button" class="delete-player btn btn-sm btn-danger"
-                                                data-id="{% url 'snc:delete_leadership' l.pk %}">
+                                                data-id="#">
                                                 <span class="fa fa-trash"></span>
                                             </button> -->
                                         </div>

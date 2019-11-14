@@ -39,7 +39,7 @@ class PlayerListView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'players'
     template_name = 'players/list.html'
     paginate_by = 10
-    ordering = ['player_name']
+    ordering = ['-player_name']
 
     def get_context_data(self, **kwargs):
         context = super(PlayerListView, self).get_context_data(**kwargs)
