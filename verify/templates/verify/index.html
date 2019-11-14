@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block content %}
+<!-- top tiles -->
+<div class="row tile_count">
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Total Players</span>
+        <div class="count">{{ total_players }}</div>
+        <span class="count_bottom"> All Players Available</span>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-clock-o"></i> Injuries This week</span>
+        <div class="count">{{ verify }}</div>
+        <span class="count_bottom"> Total Verifications this weeek</span>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> Clubs</span>
+        <div class="count green">{{ club_count }}</div>
+        <span class="count_bottom"><i class="green"></i> Total Clubs</span>
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-user"></i> High Schools </span>
+        <div class="count">{{ schools }}</div>
+        <span class="count_bottom"><i class="red"></i> Total High Schools</span>
+    </div>
+</div>
+<!-- /top tiles -->
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="dashboard_graph">
+            <div class="x_title">
+                <h2>System Summary <small></small></h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-6">
+                    <div class="demo-container" style="height:280px">
+                        <!-- <div id="chart_plot_02" class="demo-placeholder"></div> -->
+                        <div id="container"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="demo-container" style="height:280px">
+                        <!-- <div id="chart_plot_02" class="demo-placeholder"></div> -->
+                        <div id="container1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

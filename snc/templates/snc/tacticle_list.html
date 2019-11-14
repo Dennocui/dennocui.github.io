@@ -1,0 +1,122 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row x_title">
+            <div class="col-md-6">
+                <h3>List<small></small></h3>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <button class="create-tacticle btn btn-primary" type="button" name="button">
+                        Create Report
+                    </button>
+                </div>
+
+                <div class="x_content">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Player Name</th>
+                                    <th>Positioning </th>
+                                    <th>Gameplan</th>
+                                    <th>Workrate</th>
+                                    <th>Tactical Awareness</th>
+                                    <th>Communication</th>
+                                    <th>Scrummaging</th>
+                                    <th>Throwing</th>
+                                    <th>Kicking Post</th>
+                                    <th>Commment</th>
+                                    <th>Created At</th>
+                                    <th>Actions</th>
+
+
+
+
+
+
+
+
+
+
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for l in tacticles %}
+
+                                <tr>
+                                    <td>{{ l.player }}</td>
+                                    <td>{{ l.positioning  }}</td>
+                                    <td>{{ l.gameplan }}</td>
+                                    <td>{{ l.workrate }}</td>
+                                    <td>{{ l.tactical_awareness }}</td>
+                                    <td>{{ l.communication }}</td>
+                                    <td>{{ l.scrummaging }}</td>
+                                    <td>{{ l.throwing }}</td>
+                                    <td>{{ l.kicking_post }}</td>
+                                    <td>{{ l.tacticle_commment }}</td>
+                                    <td>{{ l.created_at }}</td>
+
+
+                                    </td>
+
+                                    <td>
+                                        <div class="text-center">
+                                            <!-- Read book buttons -->
+                                            <button type="button" class="tacticle-details btn btn-sm btn-primary"
+                                                data-id="{% url 'snc:tacticle_details' l.pk %}">
+                                                <span class="fa fa-eye"></span>
+                                            </button>
+                                            <!-- Update book buttons -->
+                                            <button type="button" class="update-tacticle btn btn-sm btn-primary"
+                                                data-id="{% url 'snc:update_tacticle' l.pk %}">
+                                                <span class="fa fa-pencil"></span>
+                                            </button>
+                                            <!-- Delete book buttons -->
+                                            <!-- <button type="button" class="delete-player btn btn-sm btn-danger"
+                                                data-id="#">
+                                                <span class="fa fa-trash"></span>
+                                            </button> -->
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if is_paginated %}
+    {% include 'includes/pagination.html' %}
+    {% endif %}
+</div>
+
+{% endblock %}

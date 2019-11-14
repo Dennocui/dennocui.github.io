@@ -9,4 +9,4 @@ class PlayerFilter(django_filters.FilterSet):
 
     class Meta:
         model = Player
-        fields = ['player_name', 'position', 'club', 'date_of_birth', ]
+        fields = ['player_name',  'club', 'position', ]

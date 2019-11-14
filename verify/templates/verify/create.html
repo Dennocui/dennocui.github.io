@@ -1,0 +1,166 @@
+{% load widget_tweaks %} {% load static %}
+
+<form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field }}
+    {% endfor %}
+
+    <div class="modal-header">
+        <h3 class="modal-title">Add Documents</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+
+
+    <div class="modal-body">
+
+        <div class="row">
+            <span class="section">Choose Player</span>
+            <div class="col-md-5">
+                <label for="{{ form.player.id_for_label }}">{{ form.player.label }}</label>
+
+                {% render_field form.player class="form-control" placeholder=form.player.label %}
+
+                <div class="{% if form.player.errors %} invalid{% endif %}">
+                    {% for error in form.player.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <span class="section">Birth Certificate</span>
+        <div class="row">
+
+            <div class="col-md-5">
+                <label for="{{ form.birth_cert_pdf.id_for_label }}">{{ form.birth_cert_pdf.label }}</label>
+
+                {% render_field form.birth_cert_pdf class="form-control" placeholder=form.birth_cert_pdf.label %}
+
+                <div class="{% if form.birth_cert_pdf.errors %} invalid{% endif %}">
+                    {% for error in form.birth_cert_pdf.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <label for="{{ form.birth_cert_no.id_for_label }}">{{ form.birth_cert_no.label }}</label>
+
+                {% render_field form.birth_cert_no class="form-control" placeholder=form.birth_cert_no.label %}
+
+                <div class="{% if form.birth_cert_no.errors %} invalid{% endif %}">
+                    {% for error in form.birth_cert_no.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <label for="{{ form.check_cert.id_for_label }}">{{ form.check_cert.label }}</label>
+                {% render_field form.check_cert %}
+                <div class="{% if form.check_cert.errors %} invalid{% endif %}">
+                    {% for error in form.check_cert.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <span class="section">Passport</span>
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <label for="{{ form.passport_image.id_for_label }}">{{ form.passport_image.label }}</label>
+
+                {% render_field form.passport_image class="form-control" placeholder=form.passport_image.label %}
+
+                <div class="{% if form.passport_image.errors %} invalid{% endif %}">
+                    {% for error in form.passport_image.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <label for="{{ form.passport.id_for_label }}">{{ form.passport.label }}</label>
+
+                {% render_field form.passport class="form-control" placeholder=form.passport.label %}
+
+                <div class="{% if form.passport.errors %} invalid{% endif %}">
+                    {% for error in form.passport.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <label for="{{ form.check_passport.id_for_label }}">{{ form.check_passport.label }}</label>
+                {% render_field form.check_passport %}
+                <div class="{% if form.check_passport.errors %} invalid{% endif %}">
+                    {% for error in form.check_passport.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <span class="section">National ID</span>
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <label for="{{ form.id_image.id_for_label }}">{{ form.id_image.label }}</label>
+
+                {% render_field form.id_image class="form-control" placeholder=form.id_image.label %}
+
+                <div class="{% if form.id_image.errors %} invalid{% endif %}">
+                    {% for error in form.id_image.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <label for="{{ form.id_number.id_for_label }}">{{ form.id_number.label }}</label>
+
+                {% render_field form.id_number class="form-control" placeholder=form.id_number.label %}
+
+                <div class="{% if form.id_number.errors %} invalid{% endif %}">
+                    {% for error in form.id_number.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <label for="{{ form.check_id.id_for_label }}">{{ form.check_id.label }}</label>
+                {% render_field form.check_id %}
+                <div class="{% if form.check_id.errors %} invalid{% endif %}">
+                    {% for error in form.check_id.errors %}
+                    <p class="help-block">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="submit-btn btn btn-primary">Update</button>
+    </div>
+</form>

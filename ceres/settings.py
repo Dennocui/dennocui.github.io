@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'medical',
     # 'transfer',
     'events',
+    'verify',
 
     'crispy_forms',
     'bootstrap_modal_forms',

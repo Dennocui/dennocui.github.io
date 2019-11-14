@@ -16,25 +16,15 @@
               <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
             <li class="dropdown">
-              <a
-                href="#"
-                class="dropdown-toggle"
-                data-toggle="dropdown"
-                role="button"
-                aria-expanded="false"
-                ><i class="fa fa-wrench"></i
-              ></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+                  class="fa fa-wrench"></i></a>
             </li>
             <li>
               <a class="close-link"><i class="fa fa-close"></i></a>
             </li>
           </ul>
           <div class="clearfix"></div>
-          <button
-            class="create-medical-report btn btn-primary"
-            type="button"
-            name="button"
-          >
+          <button class="create-medical-report btn btn-primary" type="button" name="button">
             Create Report
           </button>
         </div>
@@ -46,7 +36,7 @@
                 <tr>
                   <th>Player Name</th>
                   <th>Injury Type</th>
-                  <th>Injury Comments</th>
+                  <th>Comments</th>
                   <th>Injury Date</th>
                   <th>Recovery Date</th>
                   <th>Status</th>
@@ -56,49 +46,40 @@
 
               <tbody>
                 {% for medical in medicals %}
-                {% if medical.days_left >= 0  %}
+
                 <tr>
                   <td>{{ medical.player }}</td>
-                  <td>{{ medical.injury_type }}</td>
+                  <td>{{ medical.injury }}</td>
                   <td>{{ medical.injury_comments }}</td>
                   <td>{{ medical.injury_date }}</td>
                   <td>{{ medical.recovery_date }}</td>
                   <td>
-                  
-                  <span class="label label-danger">Unfit {{ medical.days_left }}  Days Left </span>  
-                  
+
+                    <span class="label label-danger">Unfit {{ medical.days_left.days }} Days Left </span>
+
                   </td>
 
                   <td>
                     <div class="text-center">
                       <!-- Read book buttons -->
-                      <button
-                        type="button"
-                        class="player-details btn btn-sm btn-primary"
-                        data-id="{% url 'medical:medical_details' medical.pk %}"
-                      >
+                      <button type="button" class="player-details btn btn-sm btn-primary"
+                        data-id="{% url 'medical:medical_details' medical.pk %}">
                         <span class="fa fa-eye"></span>
                       </button>
                       <!-- Update book buttons -->
-                      <button
-                        type="button"
-                        class="update-player btn btn-sm btn-primary"
-                        data-id="{% url 'medical:update_medical' medical.pk %}"
-                      >
+                      <button type="button" class="update-player btn btn-sm btn-primary"
+                        data-id="{% url 'medical:update_medical' medical.pk %}">
                         <span class="fa fa-pencil"></span>
                       </button>
                       <!-- Delete book buttons -->
-                      <button
-                        type="button"
-                        class="delete-player btn btn-sm btn-danger"
-                        data-id="{% url 'medical:delete_medical' medical.pk %}"
-                      >
+                      <button type="button" class="delete-player btn btn-sm btn-danger"
+                        data-id="{% url 'medical:delete_medical' medical.pk %}">
                         <span class="fa fa-trash"></span>
                       </button>
                     </div>
                   </td>
                 </tr>
-                {% endif %}
+
                 {% endfor %}
               </tbody>
             </table>

@@ -1,7 +1,7 @@
 # Register your models here.
 from django.contrib import admin
 
-from .models import Conditioning
+from .models import Conditioning, TechnicalSkill, TacticleSkill, MentalSkill, PhysicalSkill, LeadershipSkill
 
 # admin.site.register(Conditioning)
 
@@ -35,3 +35,9 @@ class ConditioningAdmin(admin.ModelAdmin):
             'fields': (('suppliment_taken'), ('conditioning_notes'))
         }),
     )
+
+admin.site.register(TechnicalSkill)
+admin.site.register(TacticleSkill)
+admin.site.register(MentalSkill)
+admin.site.register(PhysicalSkill)
+admin.site.register(LeadershipSkill)

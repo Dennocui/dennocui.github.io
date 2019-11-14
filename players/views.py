@@ -26,42 +26,7 @@ from medical.models import MedicalReport
 from django.utils.safestring import mark_safe
 # import calendar
 from .filters import PlayerFilter
-
-
 from . models import Player
-
-# Create your views here.
-
-
-class VerifyListView(LoginRequiredMixin, generic.ListView):
-    model = Player
-    context_object_name = 'players'
-    template_name = 'players/verify.html'
-    paginate_by = 10
-    ordering = ['player_name']
-
-    def get_context_data(self, **kwargs):
-        context = super(VerifyListView, self).get_context_data(**kwargs)
-        players = self.get_queryset()
-        page = self.request.GET.get('page')
-        paginator = Paginator(players, self.paginate_by)
-        try:
-            players = paginator.page(page)
-        except PageNotAnInteger:
-            players = paginator.page(1)
-        except EmptyPage:
-            players = paginator.page(paginator.num_pages)
-        context['players'] = players
-        return context
-
-
-class VerifyUpdateView(LoginRequiredMixin, BSModalUpdateView):
-    model = Player
-    template_name = 'players/verify_update.html'
-    context_object_name = 'player'
-    form_class = PlayerForm
-    success_message = 'Success: Player was Verified Successfuly.'
-    success_url = reverse_lazy('players:verify')
 
 
 '''

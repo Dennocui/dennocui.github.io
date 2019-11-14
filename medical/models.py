@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+from datetime import datetime, date
 import datetime
 from players.models import Player
 
@@ -17,10 +17,10 @@ class Injury(models.Model):
         (SEVERE, 'Severe'),
     ]
 
-    injury_serverity = models.CharField(
-        max_length=2, choices=INJURY_SEVERITY, default=MINIMAL,)
-
-    injury_type = models.CharField(max_length=225)
+    injury_serverity = models.CharField('Injury Serverity', max_length=2, choices=INJURY_SEVERITY, default=MINIMAL,)
+    injury_type = models.CharField('Injury Type', max_length=225)
+    notes = models.TextField('Notes', null=True)
+    created_at = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     def __str__(self):
         return "{}".format(self.injury_type[:25])
@@ -40,8 +40,8 @@ class MedicalReport(models.Model):
         return "{}".format(self.player.player_name[:25])
 
     def days_left(self):
-        today = datetime.datetime.now()
-        recovery_day = self.recovery_date
-
-        day2 = recovery_day.day
-        return day2
+        today = date.today()
+        recovery = self.recovery_date
+        days = recovery - today
+        
+        return days 

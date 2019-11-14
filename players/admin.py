@@ -11,19 +11,20 @@ class PlayerAdmin(admin.ModelAdmin):
     ordering = ('player_name',)
     search_fields = ('player_name', 'address')
     fieldsets = (
-        ('Basic Information', {
+        ('Personal Information', {
             #   'description': "Player Bio Data.",
-            'fields': (('player_name', 'date_of_birth', 'phone_number', 'email'), ('address', 'address_contact'))
+            'fields': (('player_name', 'date_of_birth', 'phone_number', 'email'), ('address'), ('kin', 'kin_contact'))
         }),
-        ('Identity Information', {
-            'fields': (('id_number', 'id_image', 'check_id'), ('birth_cert_no', 'birth_cert_pdf', 'check_cert'), ('passport', 'passport_image', 'check_passport'))
-        }),
-        ('More Information', {
+
+        ('Player Details', {
             #   'description': "Player Bio Data.",
-            'fields': (('club', 'position'), ('skills', 'about_player', 'tertiary_institution'), ('allergy', 'injury_history'))
+            'fields': (('club', 'position'), ('high_school', 'tertiary_institution'), ('allergy', 'injury_history','about_player'))
         }),
+
         ('Other Information', {
             #  'classes': ('collapse',),
-            'fields': (('kin', 'kin_contact'), 'image')
+            'fields': ('image',)
         }),
     )
+
+#

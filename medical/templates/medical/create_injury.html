@@ -1,0 +1,67 @@
+{% load widget_tweaks %}
+
+
+<div class="modal-header">
+  <h3 class="modal-title">Add New Injury</h3>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<form method="post" action="">
+  {% csrf_token %}
+
+  <div class="form-body">
+    <div class="modal-body">
+
+
+      <div class="form-group">
+
+        <div class="row">
+          <div class="col-md-12">
+            <label for="{{ form.injury_type.id_for_label }}">{{ form.injury_type.label }}</label>
+
+            {% render_field form.injury_type class="form-control" placeholder=form.injury_type.label %}
+
+            <div class="{% if form.injury_type.errors %} invalid{% endif %}">
+              {% for error in form.injury_type.errors %}
+              <p class="help-block">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <br>
+
+          <div class="col-md-12">
+            <label for="{{ form.injury_serverity.id_for_label }}">{{ form.injury_serverity.label }}</label>
+
+            {% render_field form.injury_serverity class="form-control" placeholder=form.injury_serverity.label %}
+
+            <div class="{% if form.injury_serverity.errors %} invalid{% endif %}">
+              {% for error in form.injury_serverity.errors %}
+              <p class="help-block">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <br>
+          <div class="col-md-12">
+            <label for="{{ form.notes.id_for_label }}">{{ form.notes.label }}</label>
+
+            {% render_field form.notes class="form-control" placeholder=form.notes.label %}
+
+            <div class="{% if form.notes.errors %} invalid{% endif %}">
+              {% for error in form.notes.errors %}
+              <p class="help-block">{{ error }}</p>
+              {% endfor %}
+            </div>
+          </div>
+
+        </div>
+
+        </ </div> </div> <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="submit-btn btn btn-primary">Create</button>
+      </div>
+    </div>
+</form>

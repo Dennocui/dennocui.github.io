@@ -1,0 +1,170 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="row x_title">
+    <div class="col-md-6">
+      <h3>Players Verification <small></small></h3>
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <ul class="nav navbar-right panel_toolbox">
+          <li>
+            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i
+                class="fa fa-wrench"></i></a>
+          </li>
+          <li>
+            <a class="close-link"><i class="fa fa-close"></i></a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+        <button class="add-verify btn btn-primary" type="button" name="button">
+          Add New
+        </button>
+
+      </div>
+
+      <div class="x_content">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Player Name</th>
+                <th>Birth Cert No</th>
+                <th>ID No</th>
+                <th>Passport</th>
+
+                <th>Status</th>
+
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for player in verify %}
+
+              <tr>
+                <td>{{ player.player }}</td>
+                <td>{{ player.birth_cert_no }}
+                  {% if player.check_cert %}
+                  <span style="font-size: 20px; color: green;">
+                    <i class="fa fa-check-circle"></i>
+                  </span>
+
+                  {% else %}
+                  <span style="font-size: 20px; color: tomato;">
+                    <i class="fa fa-times-circle"></i>
+                  </span>
+                  {% endif %}
+                </td>
+
+
+                <td>{{ player.id_number }}
+                  {% if player.check_id %}
+                  <span style="font-size: 20px; color: green;">
+                    <i class="fa fa-check-circle"></i>
+                  </span>
+
+                  {% else %}
+                  <span style="font-size: 20px; color: tomato;">
+                    <i class="fa fa-times-circle"></i>
+                  </span>
+                  {% endif %}
+                </td>
+
+                <td>{{ player.passport}}
+                  {% if player.check_passport %}
+                  <span style="font-size: 20px; color: green;">
+                    <i class="fa fa-check-circle"></i>
+                  </span>
+
+                  {% else %}
+                  <span style="font-size: 20px; color: tomato;">
+                    <i class="fa fa-times-circle"></i>
+                  </span>
+                  {% endif %}
+
+
+                </td>
+
+                <td>
+                  {% if player.verification == 1 %}
+
+                  <span class="label label-success">Verified</span>
+
+                  {% elif player.verification == 2   %}
+
+                  <span class="label label-info">only 2</span>
+
+                  {% elif player.verification == 3 %}
+
+                  <span class="label label-warning">only 1</span>
+
+                  {% elif player.verification == 4 %}
+                  <span class="label label-danger">Nothing</span>
+
+                  {% endif %}
+
+
+                </td>
+
+
+
+                <td>
+                  <div class="text-center">
+                    <!-- Read Player buttons -->
+
+                    <button type="button" class="update-verify btn btn-sm btn-primary"
+                      data-id="{% url 'verify:update_verify' player.pk %}">
+                      <span class="fa fa-pencil"></span>
+                    </button>
+
+                    <!-- Update Player buttons -->
+                    <button type="button" class="verify btn btn-sm btn-success"
+                      data-id="{% url 'verify:update' player.pk %}">
+                      <span class="fa fa-check-circle"></span>
+                    </button>
+
+                    </button>
+                    <!-- Delete Player buttons -->
+                    <button type="button" class="delete-verify btn btn-sm btn-danger"
+                      data-id="{% url 'verify:delete' player.pk %}">
+                      <span class="fa fa-trash"></span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              {% endfor %}
+            </tbody>
+
+          </table>
+          {% if is_paginated %} {% include 'includes/pagination.html' %} {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="modal fade" role="dialog" id="modal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
+
+
+<!-- Create book button -->
+
+
+{% endblock %}
+</div>
