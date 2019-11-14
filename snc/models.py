@@ -54,7 +54,7 @@ class TechnicalSkill(models.Model):
     one_on_one = models.CharField('One on One', max_length=15, choices=SKILL_LEVEL, default=WORKON,)
     support = models.CharField('Support Play',max_length=15, choices=SKILL_LEVEL, default=WORKON,)
     high_ball = models.CharField('High Ball', max_length=15, choices=SKILL_LEVEL, default=WORKON,)
-    kicking = models.CharField('Kicking(Grubber/Punt/Chip)', max_length=15, choices=SKILL_LEVEL, blank=True,)
+    kicking = models.CharField('Kicking(Grubber/Punt/Chip)', max_length=15, choices=SKILL_LEVEL, null=True,)
     commment = models.TextField()
 
     created_at = models.DateTimeField('Date Created', auto_now=True, auto_now_add=False)
