@@ -36,8 +36,7 @@ def dashboard(request):
     club_count = Club.objects.count()
     schools = HighSchool.objects.count()
 
-    dataset = Position.objects.values('name').annotate(
-        player_count=Count('player')).order_by('id')
+    dataset = Position.objects.values('name').annotate(player_count=Count('player')).order_by('id')
     # .order_by('position')
 
     positions = list()
@@ -47,8 +46,7 @@ def dashboard(request):
         positions.append(entry['name'])
         player_series_data.append(entry['player_count'])
 
-    club_dataset = Club.objects.values('name').annotate(
-        player_count=Count('player')).order_by('id')
+    club_dataset = Club.objects.values('name').annotate(player_count=Count('player')).order_by('id')
     # .order_by('position')
 
     clubs = list()

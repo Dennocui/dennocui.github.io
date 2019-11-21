@@ -10,6 +10,8 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from bootstrap_modal_forms.generic import BSModalCreateView
+from django.db.models import Count, Q
+import json
 
 
 from .forms import MedicalReportForm, InjuryForm
@@ -19,52 +21,35 @@ from . models import MedicalReport, Injury
 
 @login_required
 def dashboard(request):
+    dataset = Injury.objects.values('injury_type').annotate(total=Count('medicalreport')).order_by('id')
 
-    # total_players = Player.objects.count()
-    injuries = MedicalReport.objects.count()
-    # club_count = Club.objects.count()
-    # schools = HighSchool.objects.count()
+    categories = list()
+    survived_series_data = list()
 
+    for entry in dataset:
+        categories.append(entry['injury_type'])
+        survived_series_data.append(entry['total'])
 
-    # dataset = Position.objects.values('name').annotate(player_count=Count('player')).order_by('id')
-    # # .order_by('position')
-
-
-    # positions = list()
-    # player_series_data = list()
-
-
-    # for entry in dataset:
-    #     positions.append(entry['name'])
-    #     player_series_data.append(entry['player_count'])
-
-
-    # club_dataset = Club.objects.values('name').annotate(player_count=Count('player')).order_by('id')
-    # # .order_by('position')
-
-
-    # clubs = list()
-    # player_data = list()
-
-
-    # for entry in club_dataset:
-    #     clubs.append(entry['name'])
-    #     player_data.append(entry['player_count'])
-
-
-    return render(request, 'medical/index.html'
-    , {
-    #     'positions': json.dumps(positions),
-    #     'player_series_data': json.dumps(player_series_data),
-    #     'clubs': json.dumps(clubs),
-    #     'player_data': json.dumps(player_data),
-    #     'total_players': total_players,
-        'injuries': injuries,
-    #     'club_count': club_count,
-    #     'schools': schools ,
-
+    survived_series = {
+        'name': 'Injuries',
+        'data': survived_series_data,
+        'color': 'green'
     }
-    )
+
+
+    chart = {
+        'chart': {'type': 'column'},
+        'title': {'text': 'Injuries'},
+        'xAxis': {'categories': categories},
+        'series': [survived_series]
+    }
+
+    dump = json.dumps(chart)
+
+    return render(request, 'medical/index.html', {'chart': dump})
+
+
+
 
 ''' 
 Views for MedicalReport Model
