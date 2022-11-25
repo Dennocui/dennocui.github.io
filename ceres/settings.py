@@ -28,7 +28,7 @@ SECRET_KEY = 'los=mp%(#n8xcic3)6p2ymrkh^5gr8#ws24)u!^=8r)_9$4my('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -101,15 +101,15 @@ WSGI_APPLICATION = 'ceres.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ceres1',
-        'USER': 'postgres',
-        'PASSWORD': 'times',
-        # 'HOST': '127.0.0.1',
-        # 'PORT': '5433'
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'ceres1',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'times',
+    #     # 'HOST': '127.0.0.1',
+    #     # 'PORT': '5433'
 
-    }
+    # }
 }
 
 # DATABASES = {
